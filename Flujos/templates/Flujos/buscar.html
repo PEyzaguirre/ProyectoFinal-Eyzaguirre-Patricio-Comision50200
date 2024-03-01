@@ -1,0 +1,50 @@
+{% extends 'Flujos/home.html' %}
+
+
+{% block titulo %}
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Buscar Productos</h1>
+        <br>
+    </div>        
+{% endblock titulo %}
+    
+
+{% block contenido %}    
+    <div class="container-fluid px-4">
+        <style>
+            table, th, td{
+                border: 1px solid #d1cccc;
+                border-collapse: collapse;
+            }
+            th, td{
+                padding: 10px;
+            }
+            th{
+                text-align: center;
+                background-color: #cccccc                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+            }
+        </style>
+
+        <form action="buscarProd" method="get">
+            {% csrf_token %}
+
+            <table>
+                <p></p>
+                <tbody>                
+                    <tr>
+                        <td>Patron a buscar:</td>
+                        <td> <input type="text" name="buscar" id="buscar"></td>
+                    </tr>                         
+                </tbody>
+            </table>
+            
+            <br>
+            <input type="submit" value= "Enviar datos" style="background-color: #cccccc; width: 150px">
+            &nbsp;&nbsp;&nbsp;&nbsp
+            <a href="{% url 'home' %}">
+                <input type="button" value= "Volver al Home" style="background-color: #cccccc; width: 150px">
+            </a>
+            
+        </form>
+    </div>      
+{% endblock contenido %}

@@ -1,0 +1,70 @@
+{% extends 'Flujos/home.html' %}
+
+{% block titulo %}
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Locales</h1>
+        <br>
+    </div>    
+{% endblock titulo %}
+    
+
+{% block contenido %}    
+    <div class="container-fluid px-4">
+        <style>
+            table, th, td{
+                border: 1px solid #d1cccc;
+                border-collapse: collapse;
+            }
+            th, td{
+                padding: 10px;
+            }
+            th{
+                text-align: center;
+                background-color: #cccccc                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in locales %}
+                    <tr>
+                        <td>{{c.id}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.ubicacion}}</td>
+                        <td>
+                            <a 
+                                href="{% url 'ActualizaLocal' c.id %}"
+                                class="btn btn-primary"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                <i class="fa fa-edit fa-sm" title="Editar"></i>
+
+                            </a>
+                            <a
+                            href="{% url 'BorraLocal' c.id %}"
+                                class="btn btn-danger"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                <i class="fa fa-trash fa-sm" title="Eliminar"></i>
+                            </a>
+                        </td>
+                    </tr>                
+                {% endfor %}            
+            </tbody>
+        </table>
+        
+        <br>
+
+        <a href="{% url 'home' %}">
+            <input type="button" value= "Volver al Home" style="background-color: #cccccc; width: 150px">
+        </a>
+
+    </div>       
+{% endblock contenido %}
+     

@@ -1,0 +1,40 @@
+{% extends 'Flujos/home.html' %}
+
+{% block titulo %}
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Avatar</h1>
+        <br>
+    </div>        
+{% endblock titulo %}
+    
+
+{% block contenido %}    
+    <style>
+        table{
+            border: 1px solid #d1cccc
+        }
+        table, th, td{        
+            border-collapse: collapse;
+        }
+        th, td{
+            padding: 10px;
+            font-style: normal;
+            font-weight: unset
+        }
+    </style>
+
+    <div class="container-fluid px-4">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <br>
+            <input type="submit" value= "Actualizar Avatar" style="background-color: #cccccc; width: 150px"> 
+            &nbsp;&nbsp;&nbsp;&nbsp
+            <a href="{% url 'home' %}">
+                <input type="button" value= "Volver al Home" style="background-color: #cccccc; width: 150px">
+            </a>               
+        </form>        
+    </div>    
+{% endblock contenido %}
